@@ -115,7 +115,7 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=couchdb1_usr
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=couchdb1_pwd
     depends_on:
-      - couchdb0
+      - couchdb1
     networks:
       - depa_network
 

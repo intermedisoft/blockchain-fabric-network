@@ -1,0 +1,60 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+networks:
+  depa_network:
+services:
+  ca0:
+    image: hyperledger/fabric-ca
+    environment:
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-phr
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY
+    ports:
+      - "7054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY -b admin:adminpw -d'
+    volumes:
+      - ./crypto-config/peerOrganizations/phr.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peer_phr
+    networks:
+      - depa_network
+
+  orderer.ehrblox.com:
+    extends:
+      file: base/docker-compose-base.yaml
+      service: orderer.ehrblox.com
+    container_name: orderer.ehrblox.com
+    networks:
+      - depa_network
+
+  couchdb0:
+    container_name: couchdb0
+    image: hyperledger/fabric-couchdb
+    environment:
+      - COUCHDB_USER=couchdb0_usr
+      - COUCHDB_PASSWORD=couchdb0_pwd
+    ports:
+      - "5984:5984"
+    networks:
+      - depa_network
+
+  peer0.phr.ehrblox.com:
+    container_name: peer0.phr.ehrblox.com
+    extends:
+      file: base/docker-compose-base.yaml
+      service: peer0.phr.ehrblox.com
+    environment:
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb0:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=couchdb0_usr
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=couchdb0_pwd
+    depends_on:
+      - couchdb0
+    networks:
+      - depa_network
