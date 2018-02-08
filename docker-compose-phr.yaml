@@ -86,6 +86,6 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - mongodb0
+      - mongo0
     networks:
       - depa_network
