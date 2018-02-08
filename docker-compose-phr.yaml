@@ -21,6 +21,7 @@ services:
     command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY -b admin:adminpw -d'
     volumes:
       - ./crypto-config/peerOrganizations/phr.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - /var/hyperledger/ca0:/etc/hyperledger/fabric-ca-server
     container_name: ca_peer_phr
     networks:
       - depa_network
@@ -41,6 +42,8 @@ services:
       - COUCHDB_PASSWORD=couchdb0_pwd
     ports:
       - "5984:5984"
+    volumes:
+      - /var/hyperledger/couchdb0:/opt/couchdb/data
     networks:
       - depa_network
 
@@ -56,5 +59,50 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=couchdb0_pwd
     depends_on:
       - couchdb0
+      - orderer.ehrblox.com
+    networks:
+      - depa_network
+
+  mongo0:
+    container_name: mongo0
+    image: mongo
+    volumes:
+      - /var/hyperledger/mongo:/data
+    ports:
+      - "27017:27017"
+    networks:
+      - depa_network
+
+  rest0:
+    container_name: rest0
+    image: depa/blockchain-composer-rest-server
+    environment:
+      - COMPOSER_CARD=admin@my-network
+      - COMPOSER_NAMESPACES=required
+      - COMPOSER_AUTHENTICATION=true
+      - COMPOSER_MULTIUSER=true
+      - COMPOSER_PROVIDERS=|
+        '{
+          "github": {
+              "provider": "github",
+              "module": "passport-github",
+              "clientID": "cd9c1c736cafe3080972",
+              "clientSecret": "de63d112587d11ffaeb170aaa8dfd7071786ccd4",
+              "authPath": "/auth/github",
+              "callbackURL": "/auth/github/callback",
+              "successRedirect": "/",
+              "failureRedirect": "/"
+            }
+          }'
+      - COMPOSER_DATASOURCES=|
+        '{
+          "db": {
+              "name": "db",
+              "connector": "mongodb",
+              "host": "mongo"
+          }
+        }'
+    ports:
+      - "3000:3000"
     networks:
       - depa_network

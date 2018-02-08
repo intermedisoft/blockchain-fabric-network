@@ -21,6 +21,7 @@ services:
     command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.pensook.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA2_PRIVATE_KEY -b admin:adminpw -d'
     volumes:
       - ./crypto-config/peerOrganizations/pensook.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - /var/hyperledger/ca2:/etc/hyperledger/fabric-ca-server
     container_name: ca_peer_pensook
     networks:
       - depa_network
@@ -46,6 +47,8 @@ services:
     environment:
       - COUCHDB_USER=couchdb2_usr
       - COUCHDB_PASSWORD=couchdb2_pwd
+    volumes:
+      - /var/hyperledger/couchdb0:/opt/couchdb/data
     ports:
       - "7984:5984"
     networks:

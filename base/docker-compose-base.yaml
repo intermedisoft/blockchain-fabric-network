@@ -25,9 +25,9 @@ services:
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric
     command: orderer
     volumes:
-    - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-    - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp:/var/hyperledger/orderer/msp
-    - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/tls/:/var/hyperledger/orderer/tls
+      - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp:/var/hyperledger/orderer/msp
+      - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/tls/:/var/hyperledger/orderer/tls
     ports:
       - 7050:7050
 
@@ -43,8 +43,8 @@ services:
       - CORE_PEER_LOCALMSPID=PHRBloxMSP
     volumes:
         - /var/run/:/host/var/run/
-        - ../crypto-config/peerOrganizations/org1.ehrblox.com/peers/peer0.phr.ehrblox.com/msp:/etc/hyperledger/fabric/msp
-        - ../crypto-config/peerOrganizations/org1.ehrblox.com/peers/peer0.phr.ehrblox.com/tls:/etc/hyperledger/fabric/tls
+        - ../crypto-config/peerOrganizations/phr.ehrblox.com/peers/peer0.phr.ehrblox.com/msp:/etc/hyperledger/fabric/msp
+        - ../crypto-config/peerOrganizations/phr.ehrblox.com/peers/peer0.phr.ehrblox.com/tls:/etc/hyperledger/fabric/tls
     ports:
       - 7051:7051
       - 7053:7053
@@ -62,8 +62,8 @@ services:
       - CORE_PEER_LOCALMSPID=BPKMSP
     volumes:
         - /var/run/:/host/var/run/
-        - ../crypto-config/peerOrganizations/org1.ehrblox.com/peers/peer0.bpk.ehrblox.com/msp:/etc/hyperledger/fabric/msp
-        - ../crypto-config/peerOrganizations/org1.ehrblox.com/peers/peer0.bpk.ehrblox.com/tls:/etc/hyperledger/fabric/tls
+        - ../crypto-config/peerOrganizations/bpk.ehrblox.com/peers/peer0.bpk.ehrblox.com/msp:/etc/hyperledger/fabric/msp
+        - ../crypto-config/peerOrganizations/bpk.ehrblox.com/peers/peer0.bpk.ehrblox.com/tls:/etc/hyperledger/fabric/tls
 
     ports:
       - 8051:7051
@@ -82,8 +82,8 @@ services:
       - CORE_PEER_LOCALMSPID=PensookMSP
     volumes:
         - /var/run/:/host/var/run/
-        - ../crypto-config/peerOrganizations/org2.ehrblox.com/peers/peer0.pensook.ehrblox.com/msp:/etc/hyperledger/fabric/msp
-        - ../crypto-config/peerOrganizations/org2.ehrblox.com/peers/peer0.pensook.ehrblox.com/tls:/etc/hyperledger/fabric/tls
+        - ../crypto-config/peerOrganizations/pensook.ehrblox.com/peers/peer0.pensook.ehrblox.com/msp:/etc/hyperledger/fabric/msp
+        - ../crypto-config/peerOrganizations/pensook.ehrblox.com/peers/peer0.pensook.ehrblox.com/tls:/etc/hyperledger/fabric/tls
     ports:
       - 9051:7051
       - 9053:7053
