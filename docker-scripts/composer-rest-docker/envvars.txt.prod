@@ -1,0 +1,23 @@
+COMPOSER_CARD=admin@my-network
+COMPOSER_NAMESPACES=required
+COMPOSER_AUTHENTICATION=true
+COMPOSER_MULTIUSER=true
+COMPOSER_PROVIDERS='{
+    "github": {
+        "provider": "github",
+        "module": "passport-github",
+        "clientID": "74a706844e553bdb2a9d",
+        "clientSecret": "24270ba9c415fb3db08f11eccbc3b7148a4d1c25",
+        "authPath": "/auth/github",
+        "callbackURL": "/auth/github/callback",
+        "successRedirect": "/",
+        "failureRedirect": "/"
+    }
+}'
+COMPOSER_DATASOURCES='{
+    "db": {
+        "name": "db",
+        "connector": "mongodb",
+        "host": "mongo"
+    }
+}'
