@@ -43,7 +43,7 @@ services:
       - CORE_PEER_LOCALMSPID=PHRBloxMSP
     volumes:
         - /var/run/:/host/var/run/
-        - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ../configtx.yaml:/var/hyperledger/configtx.yaml
         - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
         - ../channel-artifacts/PHRBloxMSPanchors.tx:/var/hyperledger/channel-artifacts/PHRBloxMSPanchors.tx
         - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
@@ -66,7 +66,7 @@ services:
       - CORE_PEER_LOCALMSPID=BPKMSP
     volumes:
         - /var/run/:/host/var/run/
-        - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ../configtx.yaml:/var/hyperledger/configtx.yaml
         - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
         - ../channel-artifacts/BPKMSPanchors.tx:/var/hyperledger/channel-artifacts/BPKMSPanchors.tx
         - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
@@ -90,7 +90,7 @@ services:
       - CORE_PEER_LOCALMSPID=PensookMSP
     volumes:
         - /var/run/:/host/var/run/
-        - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ../configtx.yaml:/var/hyperledger/configtx.yaml
         - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
         - ../channel-artifacts/PensookMSPanchors.tx:/var/hyperledger/channel-artifacts/PensookMSPanchors.tx
         - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
