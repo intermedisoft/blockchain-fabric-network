@@ -35,7 +35,7 @@ services:
     volumes:
       - /var/hyperledger/couchdb1:/opt/couchdb/data
     ports:
-      - "6984:5984"
+      - "5984:5984"
     networks:
       - depa_network
 
@@ -51,31 +51,6 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=couchdb1_pwd
     depends_on:
       - couchdb1
-    networks:
-      - depa_network
-
-  mongo1:
-    container_name: mongo1
-    image: mongo
-    volumes:
-      - /var/hyperledger/mongo:/data
-    ports:
-      - "27017:27017"
-    networks:
-      - depa_network
-
-  rest1:
-    container_name: rest1
-    image: depa/blockchain-composer-rest-server
-    environment:
-      - COMPOSER_CARD=admin@my-network
-      - COMPOSER_NAMESPACES=required
-      - COMPOSER_AUTHENTICATION=true
-      - COMPOSER_MULTIUSER=true
-      - 'COMPOSER_PROVIDERS={"github": {"provider": "github", "module": "passport-github", "clientID": "cd9c1c736cafe3080972", "clientSecret": "de63d112587d11ffaeb170aaa8dfd7071786ccd4", "authPath": "/auth/github", "callbackURL": "/auth/github/callback", "successRedirect": "/", "failureRedirect": "/"}}'
-      - 'COMPOSER_DATASOURCES={ "db": { "name": "db", "connector": "mongodb", "host": "mongo" } }'
-    ports:
-      - "3000:3000"
     networks:
       - depa_network
 

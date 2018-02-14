@@ -43,6 +43,9 @@ services:
       - CORE_PEER_LOCALMSPID=PHRBloxMSP
     volumes:
         - /var/run/:/host/var/run/
+        - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
+        - ../channel-artifacts/PHRBloxMSPanchors.tx:/var/hyperledger/channel-artifacts/PHRBloxMSPanchors.tx
+        - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
         - ../crypto-config/peerOrganizations/phr.ehrblox.com/peers/peer0.phr.ehrblox.com/msp:/etc/hyperledger/fabric/msp
         - ../crypto-config/peerOrganizations/phr.ehrblox.com/peers/peer0.phr.ehrblox.com/tls:/etc/hyperledger/fabric/tls
     ports:
@@ -62,12 +65,15 @@ services:
       - CORE_PEER_LOCALMSPID=BPKMSP
     volumes:
         - /var/run/:/host/var/run/
+        - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
+        - ../channel-artifacts/BPKMSPanchors.tx:/var/hyperledger/channel-artifacts/BPKMSPanchors.tx
+        - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
         - ../crypto-config/peerOrganizations/bpk.ehrblox.com/peers/peer0.bpk.ehrblox.com/msp:/etc/hyperledger/fabric/msp
         - ../crypto-config/peerOrganizations/bpk.ehrblox.com/peers/peer0.bpk.ehrblox.com/tls:/etc/hyperledger/fabric/tls
 
     ports:
-      - 8051:7051
-      - 8053:7053
+      - 7051:7051
+      - 7053:7053
 
   peer0.pensook.ehrblox.com:
     container_name: peer0.pensook.ehrblox.com
@@ -82,8 +88,11 @@ services:
       - CORE_PEER_LOCALMSPID=PensookMSP
     volumes:
         - /var/run/:/host/var/run/
+        - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
+        - ../channel-artifacts/PensookMSPanchors.tx:/var/hyperledger/channel-artifacts/PensookMSPanchors.tx
+        - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
         - ../crypto-config/peerOrganizations/pensook.ehrblox.com/peers/peer0.pensook.ehrblox.com/msp:/etc/hyperledger/fabric/msp
         - ../crypto-config/peerOrganizations/pensook.ehrblox.com/peers/peer0.pensook.ehrblox.com/tls:/etc/hyperledger/fabric/tls
     ports:
-      - 9051:7051
-      - 9053:7053
+      - 7051:7051
+      - 7053:7053
