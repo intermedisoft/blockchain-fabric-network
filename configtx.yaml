@@ -24,7 +24,7 @@ Profiles:
                     - *PHRBlox
                     - *BPK
                     - *Pensook
-    DepaChannel:
+    depa_channel:
         Consortium: DepaBlockchainConsortium
         Application:
             <<: *ApplicationDefaults
