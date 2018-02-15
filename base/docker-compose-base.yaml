@@ -41,11 +41,13 @@ services:
       - CORE_PEER_ADDRESS=peer0.phr.ehrblox.com:7051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.phr.ehrblox.com:7051
       - CORE_PEER_LOCALMSPID=PHRBloxMSP
+      - CORE_PEER_MSPCONFIGPATH=/var/hyperledger/crypto-config/peerOrganizations/phr.ehrblox.com/users/Admin@phr.ehrblox.com/msp
     volumes:
         - /var/run/:/host/var/run/
         - ../configtx.yaml:/etc/hyperledger/configtx.yaml
         - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
         - ../channel-artifacts/PHRBloxMSPanchors.tx:/var/hyperledger/channel-artifacts/PHRBloxMSPanchors.tx
+        - ../channel-artifacts:/var/hyperledger/channel-artifacts-write
         - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
         - ../crypto-config/peerOrganizations/phr.ehrblox.com:/var/hyperledger/crypto-config/peerOrganizations/phr.ehrblox.com
         - ../crypto-config/peerOrganizations/phr.ehrblox.com/peers/peer0.phr.ehrblox.com/msp:/etc/hyperledger/fabric/msp
@@ -65,11 +67,13 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.bpk.ehrblox.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.phr.ehrblox.com:7051
       - CORE_PEER_LOCALMSPID=BPKMSP
+      - CORE_PEER_MSPCONFIGPATH=/var/hyperledger/crypto-config/peerOrganizations/bpk.ehrblox.com/users/Admin@bpk.ehrblox.com/msp
     volumes:
         - /var/run/:/host/var/run/
         - ../configtx.yaml:/etc/hyperledger/configtx.yaml
         - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
         - ../channel-artifacts/BPKMSPanchors.tx:/var/hyperledger/channel-artifacts/BPKMSPanchors.tx
+        - ../channel-artifacts/depachannel.block:/var/hyperledger/channel-artifacts/depachannel.block
         - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
         - ../crypto-config/peerOrganizations/bpk.ehrblox.com:/var/hyperledger/crypto-config/peerOrganizations/bpk.ehrblox.com
         - ../crypto-config/peerOrganizations/bpk.ehrblox.com/peers/peer0.bpk.ehrblox.com/msp:/etc/hyperledger/fabric/msp
@@ -90,11 +94,13 @@ services:
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.pensook.ehrblox.com:7051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.pensook.ehrblox.com:7051
       - CORE_PEER_LOCALMSPID=PensookMSP
+      - CORE_PEER_MSPCONFIGPATH=/var/hyperledger/crypto-config/peerOrganizations/pensook.ehrblox.com/users/Admin@pensook.ehrblox.com/msp
     volumes:
         - /var/run/:/host/var/run/
         - ../configtx.yaml:/etc/hyperledger/configtx.yaml
         - ../channel-artifacts/channel.tx:/var/hyperledger/channel-artifacts/channel.tx
         - ../channel-artifacts/PensookMSPanchors.tx:/var/hyperledger/channel-artifacts/PensookMSPanchors.tx
+        - ../channel-artifacts/depachannel.block:/var/hyperledger/channel-artifacts/depachannel.block
         - ../crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem:/var/hyperledger/crypto-config/ordererOrganizations/ehrblox.com/orderers/orderer.ehrblox.com/msp/tlscacerts/tlsca.ehrblox.com-cert.pem
         - ../crypto-config/peerOrganizations/pensook.ehrblox.com:/var/hyperledger/crypto-config/peerOrganizations/pensook.ehrblox.com
         - ../crypto-config/peerOrganizations/pensook.ehrblox.com/peers/peer0.pensook.ehrblox.com/msp:/etc/hyperledger/fabric/msp
