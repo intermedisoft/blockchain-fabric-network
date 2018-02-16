@@ -12,17 +12,17 @@ services:
     image: hyperledger/fabric-ca
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-pensook
+      - FABRIC_CA_SERVER_CA_NAME=ca-bpk
       - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.pensook.ehrblox.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/CA2_PRIVATE_KEY
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.bpk.ehrblox.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/553885c5f0613d3345335b88c6168c20b4995e1591745d80d003952e02e5ae84_sk
     ports:
       - "8054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.pensook.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA2_PRIVATE_KEY -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.bpk.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/553885c5f0613d3345335b88c6168c20b4995e1591745d80d003952e02e5ae84_sk -b admin:adminpw -d'
     volumes:
-      - ./crypto-config/peerOrganizations/pensook.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./crypto-config/peerOrganizations/bpk.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - /var/hyperledger/ca2:/etc/hyperledger/fabric-ca-server
-    container_name: ca_peer_pensook
+    container_name: ca_peer_bpk
     networks:
       - depanetwork
 
