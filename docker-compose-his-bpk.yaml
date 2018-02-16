@@ -6,7 +6,7 @@
 version: '2'
 
 networks:
-  depa_network:
+  depanetwork:
 services:
   ca2:
     image: hyperledger/fabric-ca
@@ -24,7 +24,7 @@ services:
       - /var/hyperledger/ca2:/etc/hyperledger/fabric-ca-server
     container_name: ca_peer_pensook
     networks:
-      - depa_network
+      - depanetwork
 
   peer0.bpk.ehrblox.com:
     container_name: peer0.bpk.ehrblox.com
@@ -39,7 +39,7 @@ services:
     depends_on:
       - couchdb2
     networks:
-      - depa_network
+      - depanetwork
 
   couchdb2:
     container_name: couchdb2
@@ -52,7 +52,7 @@ services:
     ports:
       - "7984:5984"
     networks:
-      - depa_network
+      - depanetwork
 
   mongo2:
     container_name: mongo2
@@ -62,7 +62,7 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - depa_network
+      - depanetwork
 
   rest2:
     container_name: rest2
@@ -79,4 +79,4 @@ services:
     depends_on:
       - mongo2
     networks:
-      - depa_network
+      - depanetwork

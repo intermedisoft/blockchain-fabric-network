@@ -6,7 +6,7 @@
 version: '2'
 
 networks:
-  depa_network:
+  depanetwork:
 services:
   ca0:
     image: hyperledger/fabric-ca
@@ -23,7 +23,7 @@ services:
       - ./crypto-config/peerOrganizations/phr.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peer_phr
     networks:
-      - depa_network
+      - depanetwork
 
   ca1:
     image: hyperledger/fabric-ca
@@ -40,7 +40,7 @@ services:
       - ./crypto-config/peerOrganizations/bpk.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peer_bpk
     networks:
-      - depa_network
+      - depanetwork
 
   ca2:
     image: hyperledger/fabric-ca
@@ -57,7 +57,7 @@ services:
       - ./crypto-config/peerOrganizations/pensook.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca_peer_pensook
     networks:
-      - depa_network
+      - depanetwork
 
   orderer.ehrblox.com:
     extends:
@@ -65,7 +65,7 @@ services:
       service: orderer.ehrblox.com
     container_name: orderer.ehrblox.com
     networks:
-      - depa_network
+      - depanetwork
 
   couchdb0:
     container_name: couchdb0
@@ -76,7 +76,7 @@ services:
     ports:
       - "5984:5984"
     networks:
-      - depa_network
+      - depanetwork
 
   peer0.phr.ehrblox.com:
     container_name: peer0.phr.ehrblox.com
@@ -91,7 +91,7 @@ services:
     depends_on:
       - couchdb0
     networks:
-      - depa_network
+      - depanetwork
 
   couchdb1:
     container_name: couchdb1
@@ -102,7 +102,7 @@ services:
     ports:
       - "6984:5984"
     networks:
-      - depa_network
+      - depanetwork
 
   peer0.bpk.ehrblox.com:
     container_name: peer0.bpk.ehrblox.com
@@ -117,7 +117,7 @@ services:
     depends_on:
       - couchdb1
     networks:
-      - depa_network
+      - depanetwork
 
   couchdb2:
     container_name: couchdb2
@@ -128,7 +128,7 @@ services:
     ports:
       - "7984:5984"
     networks:
-      - depa_network
+      - depanetwork
 
   peer0.pensook.ehrblox.com:
     container_name: peer0.pensook.ehrblox.com
@@ -143,4 +143,4 @@ services:
     depends_on:
       - couchdb2
     networks:
-      - depa_network
+      - depanetwork
