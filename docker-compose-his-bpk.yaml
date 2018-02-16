@@ -68,7 +68,7 @@ services:
     container_name: rest2
     image: depa/blockchain-composer-rest-server
     volumes:
-      - /home/imed/.composer/cards/:/home/composer/.composer/cards/
+      - /home/imed/.composer/:/home/composer/.composer/
     environment:
       - COMPOSER_CARD=admin@my-network
       - COMPOSER_NAMESPACES=required
