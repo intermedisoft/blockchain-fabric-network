@@ -18,7 +18,7 @@ services:
       - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/6f40c9165765f8854677264582a6be313f3b4812f88a0f506e3e63707ee4a541_sk
     ports:
       - "7054:7054"
-    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/CA1_PRIVATE_KEY -b admin:adminpw -d'
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/6f40c9165765f8854677264582a6be313f3b4812f88a0f506e3e63707ee4a541_sk -b admin:adminpw -d'
     volumes:
       - ./crypto-config/peerOrganizations/phr.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - /var/hyperledger/ca0:/etc/hyperledger/fabric-ca-server
