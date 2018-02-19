@@ -12,13 +12,17 @@ services:
     image: hyperledger/fabric-ca
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca-phr
+      - FABRIC_CA_SERVER_CA_NAME=ca.phr.ehrblox.com
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem
-      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/6f40c9165765f8854677264582a6be313f3b4812f88a0f506e3e63707ee4a541_sk
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/8bea8e8de5448717c57b996057c07d9c7c6ec2cfe55c6d8224d1be0b2d129206_sk
     ports:
       - "7054:7054"
+<<<<<<< HEAD
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/8bea8e8de5448717c57b996057c07d9c7c6ec2cfe55c6d8224d1be0b2d129206_sk -b admin:adminpw -d'
+=======
     command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.phr.ehrblox.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/6f40c9165765f8854677264582a6be313f3b4812f88a0f506e3e63707ee4a541_sk -b admin:adminpw -d'
+>>>>>>> d7ee38bbea90e42c753deff4838d42d0970910ef
     volumes:
       - ./crypto-config/peerOrganizations/phr.ehrblox.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - /var/hyperledger/ca0:/etc/hyperledger/fabric-ca-server
