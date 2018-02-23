@@ -4,7 +4,7 @@
 
 ## Physical Network Topology (การเชื่อมต่อทางกายภาพของ Blockchain Server)
 
-[physical-topology]: https://raw.githubusercontent.com/intermedisoft/blockchain-fabric-network/master/images/physical-network-topology.png "Physical network topology การเชื่อมต่อทางกายภาพของ Blockchain Server"
+[![physical-network-topology.png](https://s10.postimg.org/cqdnt0pcp/physical-network-topology.png)](https://postimg.org/image/9jj49e4wl/)
 
 จาก Use Case ที่เราได้ออกแบบไว้ในโปรเจคนี้ เราจะมีผู้ให้บริการ 3 แห่งเข้ามาร่วมใน Blockchain Network โดยจะเป็น Mobile Application หนึ่งเจ้า และ HIS เป็นจำนวนสองเจ้า ดังนั้นเราจึงตั้ง Server ขึ้นมาเป็นจำนวน 3 เครื่อง เปรียบเสมือนว่าผู้ให้บริการแต่ละเจ้าได้สร้าง Peer ของตนเองขึ้นมา ในการนี้ เราจะใช้ Domain name เดียวกัน คือ ehrblox.com แต่แยกเครื่อง Server ด้วย Sub-Domain ที่แตกต่างกัน
 
@@ -29,7 +29,7 @@
 * **CouchDB**: เพื่อเป็นฐานข้อมูลให้กับ Peer Node โดยจะรันอยู่คู่กับ Peer Node เสมอ
 * **REST Server และ MongoDB**: เพิ่มช่องทางการเข้าถึง Blockchain Network โดยทำให้ผู้พัฒนา Application สามารถเข้าถึงข้อมูลได้โดยการเรียกผ่าน REST API แทนการใช้งาน Hyperledger Fablic SDK เพื่อคุยกับ Peer โดยตรง
 
-[logical-component]: https://raw.githubusercontent.com/intermedisoft/blockchain-fabric-network/master/images/logical-network-component.png "Logical network components ส่วนประกอบของโหนดในแต่ละ Server"
+[![logical-network-component.png](https://s10.postimg.org/hc9s1edgp/logical-network-component.png)](https://postimg.org/image/r9ksugl2d/)
 
 ภาพข้างต้นเป็นการแสดง Logical Components ที่ทำงานอยู่บนแต่ละ Physical Server โดยหลัก ๆ จะมี Peer และ REST Server เพื่อใช้งานภายในองค์กร, CA แยกกันในแต่ละองค์กรเพื่อที่จะสามารถออก Identity ให้กับผู้ใช้งานในองค์กรได้ แต่เนื่องจาก Orderer เป็น Node ที่ใช้ในการเชื่อมต่อกันระหว่างองค์กร ดังนั้นจึงสามารถใช้งานร่วมกันได้ และเราจำลองให้วางไว้ใน Server ของ PHR Application
 
