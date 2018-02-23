@@ -50,7 +50,7 @@ services:
     volumes:
       - /var/hyperledger/couchdb0:/opt/couchdb/data
     ports:
-      - "7984:5984"
+      - "5984:5984"
     networks:
       - depanetwork
 
