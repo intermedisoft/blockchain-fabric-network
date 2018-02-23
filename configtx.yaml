@@ -76,10 +76,6 @@ Orderer: &OrdererDefaults
         AbsoluteMaxBytes: 99 MB
         PreferredMaxBytes: 512 KB
 
-    Kafka:
-        Brokers:
-            - 127.0.0.1:9092
-
     Organizations:
 
 Application: &ApplicationDefaults
